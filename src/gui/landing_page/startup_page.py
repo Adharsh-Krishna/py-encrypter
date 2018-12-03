@@ -1,22 +1,17 @@
 from Tkinter import *
 FONT_VERDANA = ('Verdana', 18)
+APP_NAME = 'Py Encrypter'
 
 
 class StartPage(Frame):
 
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
-        # heading_frame = Frame(self, bg='green', width=X, height='200')
-        # heading_frame.pack()
-        label = Label(self, text='Start Page', font=FONT_VERDANA, bg='black', fg='white')
+        heading_frame = Frame(self, bg='grey', width=600, height=500)
+        heading_frame.pack_propagate(False)
+        heading_frame.pack()
+        label = Label(heading_frame, text=APP_NAME, font=FONT_VERDANA, bg='black', fg='white')
         label.pack(fill=X)
-        #
-        # button = Button(self, text='Visit Page 1', command=lambda: controller.show_frame(PageOne))
-        # button.pack()
-        #
-        # button2 = Button(self, text='Visit Page 2', command=lambda: controller.show_frame(PageTwo))
-        # button2.pack()
-
 
 # class PageOne(Frame):
 #

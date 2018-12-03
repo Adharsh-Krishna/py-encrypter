@@ -27,4 +27,6 @@ class Application(Tk):
 
 if __name__ == '__main__':
     app = Application()
+    app.minsize(600, 500)
+    app.maxsize(600, 500)
     app.mainloop()
