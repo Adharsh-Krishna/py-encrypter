@@ -1,10 +1,12 @@
 from Tkinter import *
 from src.constants import *
+from src.services import *
 
 
 class StartPage(Frame):
     email = None
     password = None
+    data_service = DataService()
 
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
@@ -43,6 +45,7 @@ class StartPage(Frame):
         self.email = email.get()
         self.password = password.get()
         print "logging in ...", self.email, self.password
+        print self.data_service.check_credentials(self.email, self.password)
 
 
 # class PageOne(Frame):
