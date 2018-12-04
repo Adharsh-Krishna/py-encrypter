@@ -1,7 +1,6 @@
-from mongoengine import StringField, Document, ReferenceField, DateTimeField
+from mongoengine import StringField, Document, DateTimeField
 import datetime
 from src.db.db import *
-from src.models import User
 
 Mongo.connect()
 
@@ -9,4 +8,6 @@ Mongo.connect()
 class UserCredential(Document):
     password = StringField(required=True, max_length=100)
     last_login = DateTimeField(default=datetime.datetime.utcnow)
-    user = ReferenceField(User)
+    user_name = StringField(required=True, max_length=20)
+
+
