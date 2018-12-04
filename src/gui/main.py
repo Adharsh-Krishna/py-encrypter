@@ -35,6 +35,6 @@ class Application(Tk):
 
 if __name__ == '__main__':
     app = Application()
-    app.minsize(600, 500)
-    app.maxsize(600, 500)
+    app.minsize(400, 200)
+    app.maxsize(400, 200)
     app.mainloop()
