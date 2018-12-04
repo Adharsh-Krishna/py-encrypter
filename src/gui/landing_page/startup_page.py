@@ -1,3 +1,4 @@
+from ..register_page.register_page import *
 from Tkinter import *
 from src.constants import *
 from src.services import *
@@ -7,12 +8,14 @@ class StartPage(Frame):
     email = None
     password = None
     data_service = DataService()
+    router = None
 
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
+        self.router = controller
         self.__init_title_frame()
         self.__init_login_frame()
-        footer_frame = self.__init_footer_frame()
+        self.__init_footer_frame()
 
     def __init_title_frame(self):
         heading_frame = Frame(self, bg='grey', width=600, height=100)
@@ -37,9 +40,18 @@ class StartPage(Frame):
 
     def __init_footer_frame(self):
         footer_frame = Frame(self, bg='grey', width=600, height=100)
-        footer_frame.pack_propagate(False)
         footer_frame.pack(fill=X, side='bottom')
+        f = Label(footer_frame, text="Forgot Password ?", font=FONT_VERDANA)
+        f.bind("<Button-1>", lambda x: self.go_to_register_page())
+        f.grid(row=0, column=0, sticky=E, padx=20)
+
+        r = Label(footer_frame, text="Register here", font=FONT_VERDANA)
+        r.grid(row=0, column=1, sticky=E, padx=20)
+        footer_frame.pack_propagate(False)
         return footer_frame
+
+    def go_to_register_page(self):
+        self.router.show_frame('RegisterPage')
 
     def __login(self, email, password):
         self.email = email.get()
@@ -47,18 +59,5 @@ class StartPage(Frame):
         print "logging in ...", self.email, self.password
         print self.data_service.check_credentials(self.email, self.password)
 
-
-# class PageOne(Frame):
-#
-#     def __init__(self, parent, controller):
-#         Frame.__init__(self, parent)
-#         label = Label(self, text='Page One!!!', font=FONT_VERDANA)
-#         label.pack(pady=10,padx=10)
-#
-#         button1 = Button(self, text='Back to Home', command=lambda: controller.show_frame(StartPage))
-#         button1.pack()
-#
-#         button2 = Button(self, text='Page Two', command=lambda: controller.show_frame(PageTwo))
-#         button2.pack()
 
 
