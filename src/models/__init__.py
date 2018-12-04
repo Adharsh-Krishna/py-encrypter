@@ -1,2 +1,2 @@
-from user import User
+from user_detail import UserDetail
 from user_credential import UserCredential
