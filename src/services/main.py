@@ -37,6 +37,11 @@ class DataService:
         new_user_credential = UserCredential(user_name=user_name, password=hashed_password)
         new_user_credential.save()
         print "created ..."
+        return new_user_credential if new_user_credential.id else None
+
+    def check_if_user_name_exists(self, user_name):
+        user_credentials = self.user_credential.objects(user_name=user_name)
+        return True if len(user_credentials) > 0 else False
 
     # def create_user(self, e, f, l, p):
     #     u = User(email=e, first_name=f, last_name=l)
