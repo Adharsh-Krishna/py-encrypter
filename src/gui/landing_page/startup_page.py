@@ -1,12 +1,12 @@
 from Tkinter import *
 from src.constants import *
-from src.services import *
+from .validator import *
+import tkMessageBox
 
 
 class StartPage(Frame):
     user_name = None
     password = None
-    data_service = DataService()
     router = None
 
     def __init__(self, parent, controller):
@@ -55,6 +55,14 @@ class StartPage(Frame):
     def __login(self, user_name, password):
         self.user_name = user_name.get()
         self.password = password.get()
-        print "logging in ...", self.user_name, self.password
-        print self.data_service.check_credentials(self.user_name, self.password)
+        print "trying to log in ...", self.user_name, self.password
+        credentials_correct = check_credentials(self.user_name, self.password)
+        if credentials_correct is True:
+            self.router.show_frame('HomePage')
+        else:
+            StartPage.show_popup_incorrect_credentials_window()
+
+    @staticmethod
+    def show_popup_incorrect_credentials_window():
+        tkMessageBox.showwarning('Incorrect Credentials', 'User Name or Password incorrect.')
 
