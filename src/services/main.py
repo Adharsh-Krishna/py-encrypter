@@ -22,15 +22,6 @@ class DataService:
         user_credentials = self.user_credential.objects(user=user_id)
         return user_credentials[0] if len(user_credentials) > 0 else None
 
-    def check_credentials(self, user_name, entered_password):
-        desired_user = self.get_user_by_user_name(user_name)
-        if desired_user is None:
-            return False
-        if bcrypt.checkpw(entered_password.encode('utf8'), desired_user.password.encode('utf8')):
-            return True
-        else:
-            return False
-
     @staticmethod
     def create_user_credential(user_name, password):
         hashed_password = bcrypt.hashpw(password, bcrypt.gensalt())
