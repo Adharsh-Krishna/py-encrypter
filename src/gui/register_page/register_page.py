@@ -1,7 +1,6 @@
 from Tkinter import *
 from src.constants import *
 from .validator import *
-from src.services.main import *
 import tkMessageBox
 
 
@@ -11,7 +10,6 @@ class RegisterPage(Frame):
     password = None
     re_entered_password = None
     info_text = None
-    data_service = DataService()
 
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
