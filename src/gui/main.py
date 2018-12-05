@@ -1,5 +1,6 @@
 from src.gui.landing_page import *
 from src.gui.register_page import *
+from src.gui.home_page import *
 from Tkinter import *
 
 
@@ -22,6 +23,7 @@ class Application(Tk):
         self.pages = {
             'StartPage': StartPage,
             'RegisterPage': RegisterPage,
+            'HomePage': HomePage
         }
         for p in dict.keys(self.pages):
             page = self.pages[p](self.container, self)
